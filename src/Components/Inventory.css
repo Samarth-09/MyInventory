@@ -1,0 +1,18 @@
+.products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+.bttns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.bg {
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0.02);
+}

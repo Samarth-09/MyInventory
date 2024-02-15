@@ -1,0 +1,19 @@
+.bttn {
+    margin-top: 20px;
+    padding: 20px 100px;
+    text-align: center;
+    font-size: large;
+    color: blueviolet;
+    border: 1px solid rgba(138, 43, 226, 0.8);
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.bttn:hover {
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    /* background-color: rgba(138, 43, 226, 1); */
+    margin-top: 15px;
+    border: 1px solid rgba(138, 43, 226, 1);
+    /* padding: 20px 120px; */
+    /* color: white; */
+}
