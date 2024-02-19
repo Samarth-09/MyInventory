@@ -3,7 +3,8 @@ import WebName from "./WebName/WebName";
 import NavBar from "./NavBar/NavBar";
 import Product from "./Product/Product";
 import "./Inventory.css";
-import Button from "../Button/Button";
+import Button from "./Button/Button";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 export default function () {
   const data = [
     {

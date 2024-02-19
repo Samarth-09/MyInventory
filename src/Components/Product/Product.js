@@ -8,11 +8,11 @@ export default function Product(props) {
         <img className="image" src={props.img} alt="Product Image"></img>
         <hr/>
         <div class="product-details">
-          <p>{props.name}</p>
+          <button>{props.name}</button>
           <hr/>
-          <p>Quantity:- {props.quantity}</p>
+          <button>Quantity:- {props.quantity}</button>
           <hr/>
-          <p>Sales:- {props.sales}</p>
+          <button>Sales:- {props.sales}</button>
         </div>
       </div>
     </>
