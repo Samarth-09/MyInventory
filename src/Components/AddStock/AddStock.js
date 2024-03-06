@@ -1,73 +1,94 @@
 import { useState, React } from "react";
+import "./AddStock.css";
 import { Route } from "react-router-dom";
-export default function AddStock() {
-  const [data, setData] = useState({
+import NavBar from "../NavBar/NavBar.js";
+const SimpleForm = () => {
+  const [formData, setFormData] = useState({
     category: "",
     name: "",
     price: "",
     quantity: "",
     supplier: "",
   });
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(data);
-  }
-  function handleChange(e) {
-    setData((item) => ({
-      ...item,
-      [e.target.name]: e.target.value,
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
     }));
-  }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    console.log("Form submitted:", formData);
+  };
+
   return (
-    
-      <form>
-        <label>
-          Category:-
+    <div className="back">
+      <NavBar></NavBar>
+      <hr className="addstock-hr"></hr>
+      <div className="stock-input">
+        <p>Add Stock</p>
+        <label className="label">
+          Category:
           <input
             type="text"
             name="category"
-            value={data.category}
+            value={formData.category}
             onChange={handleChange}
-          ></input>
+            className="input"
+          />
         </label>
-
-        <label>
-          Name:-
+        <label className="label">
+          Name:
           <input
             type="text"
             name="name"
-            value={data.name}
+            value={formData.name}
             onChange={handleChange}
-          ></input>
+            className="input"
+          />
         </label>
-        <label>
-          Price:-
+        <label className="label">
+          Price:
           <input
-            type="number"
+            type="text"
             name="price"
-            value={data.price}
+            value={formData.price}
             onChange={handleChange}
-          ></input>
+            className="input"
+          />
         </label>
-        <label>
-          Quantity:-
+        <label className="label">
+          Quantity:
           <input
-            type="number"
+            type="text"
             name="quantity"
-            value={data.quantity}
+            value={formData.quantity}
             onChange={handleChange}
-          ></input>
+            className="input"
+          />
         </label>
-        <label>
-          supplier:-
+        <label className="label">
+          Supplier:
           <input
             type="text"
             name="supplier"
-            value={data.supplier}
+            value={formData.supplier}
             onChange={handleChange}
-          ></input>
+            className="input"
+          />
         </label>
-      </form>
-    
+        <button type="submit" className="bttnn" onClick={handleSubmit}>
+          Submit
+        </button>
+      </div>
+    </div>
   );
-}
+};
+
+// Styles
+
+export default SimpleForm;

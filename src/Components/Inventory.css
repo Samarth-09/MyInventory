@@ -14,5 +14,7 @@
 
 .bg {
     margin: 0px;
-    background-color: rgba(0, 0, 0, 0.02);
+    /* background-color: rgba(0, 0, 0, 0.9); */
+    background: linear-gradient(45deg,  rgb(0,0,0), rgba(0,0,0,0.8))
 }
+

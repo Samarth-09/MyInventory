@@ -19,7 +19,7 @@ export default function () {
       name: "Realme Narzo",
       quantity: "50",
       sales: "10000",
-      img: "/Images/img1.png",
+      img: "/Images/img2.webp",
     },
     {
       id: 4,
@@ -33,7 +33,7 @@ export default function () {
       name: "Lenevo Yoga 720",
       quantity: "50",
       sales: "10000",
-      img: "/Images/img1.png",
+      img: "/Images/img2.webp",
     },
     {
       id: 6,
@@ -47,7 +47,7 @@ export default function () {
       name: "Power Bank",
       quantity: "50",
       sales: "10000",
-      img: "/Images/img1.png",
+      img: "/Images/img2.webp",
     },
     {
       id: 8,
@@ -61,7 +61,7 @@ export default function () {
       name: "Power Bank",
       quantity: "50",
       sales: "10000",
-      img: "/Images/img1.png",
+      img: "/Images/img2.webp",
     },
   ];
   return (
@@ -69,6 +69,7 @@ export default function () {
       <div className="bg">
         <WebName></WebName>
         <NavBar></NavBar>
+        <hr className="addstock-hr"></hr>
         <div className="bttns">
           <Button name="Add Stock"></Button>
           <Button name="Add Sales"></Button>

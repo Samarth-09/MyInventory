@@ -1,8 +1,10 @@
 .nav {
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  align-items: center;
+  margin-bottom: 0px;
 }
 
 .nav a {
@@ -24,6 +26,6 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: blueviolet;
+  /* color: blueviolet; */
   font-weight: bold;
 }
