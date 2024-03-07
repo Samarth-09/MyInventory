@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import WebName from "./WebName/WebName";
 import NavBar from "./NavBar/NavBar";
 import Product from "./Product/Product";
 import "./Inventory.css";
 import Button from "./Button/Button";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from "axios";
+import Footer from "./Footer/Footer";
 export default function () {
-  const data = [
+  const [data, setData] = useState([
     {
       id: 1,
       name: "Realme X7 Max",
@@ -63,7 +64,30 @@ export default function () {
       sales: "10000",
       img: "/Images/img2.webp",
     },
-  ];
+  ]);
+  const fetchData = async () => {
+    var res = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+    var d = [...data];
+    d.push({
+      id: 10,
+      name: res.data.userId,
+      quantity: "100",
+      sales: "100",
+      img: "/Images/img2.webp",
+    });
+    // data.push();
+    setData(d);
+    console.log(data);
+  };
+  useEffect(() => {
+    // var n =9, i=1;
+    // while(i<=n)
+    // {
+
+    // }
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="bg">
@@ -86,6 +110,7 @@ export default function () {
             ></Product>
           ))}
         </div>
+        <Footer></Footer>
       </div>
     </>
   );

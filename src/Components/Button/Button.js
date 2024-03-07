@@ -8,7 +8,10 @@ export default function Button(props) {
     if (e.target.name == "Add Stock") {
       navigate("/addStock");
     }
-  }
+    else {
+      navigate("/addSales");
+    }
+    }
   return (
     <div>
       {/* <BrowserRouter> */}

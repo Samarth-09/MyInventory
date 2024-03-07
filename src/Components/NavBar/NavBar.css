@@ -7,13 +7,13 @@
   margin-bottom: 0px;
 }
 
-.nav a {
+.links {
   color: white;
   text-decoration: none;
   padding: 10px;
 }
 
-a:hover {
+.links:hover {
   text-decoration: underline;
   color: white;
 }

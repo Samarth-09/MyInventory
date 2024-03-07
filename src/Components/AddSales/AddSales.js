@@ -1,15 +1,13 @@
-import { useState, React } from "react";
-import "./AddStock.css";
-import { Route } from "react-router-dom";
-import NavBar from "../NavBar/NavBar.js";
-import Footer from "../Footer/Footer.js";
-const AddStock = () => {
+import React from "react";
+import "../AddStock/AddStock.css";
+import { useState } from "react";
+import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
+export default function AddSales() {
   const [formData, setFormData] = useState({
     category: "",
     name: "",
-    price: "",
     quantity: "",
-    supplier: "",
   });
 
   const handleChange = (e) => {
@@ -31,7 +29,7 @@ const AddStock = () => {
       <NavBar></NavBar>
       <hr className="addstock-hr"></hr>
       <div className="stock-input">
-        <p>Add Stock</p>
+        <p>Add Sales</p>
         <label className="label">
           Category:
           <input
@@ -53,31 +51,11 @@ const AddStock = () => {
           />
         </label>
         <label className="label">
-          Price:
-          <input
-            type="text"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            className="input"
-          />
-        </label>
-        <label className="label">
           Quantity:
           <input
             type="text"
             name="quantity"
             value={formData.quantity}
-            onChange={handleChange}
-            className="input"
-          />
-        </label>
-        <label className="label">
-          Supplier:
-          <input
-            type="text"
-            name="supplier"
-            value={formData.supplier}
             onChange={handleChange}
             className="input"
           />
@@ -89,8 +67,4 @@ const AddStock = () => {
       <Footer></Footer>
     </div>
   );
-};
-
-// Styles
-
-export default AddStock;
+}

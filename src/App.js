@@ -1,6 +1,7 @@
 import "./App.css";
 import AddStock from "./Components/AddStock/AddStock";
 import Inventory from "./Components/Inventory";
+import AddSales from "./Components/AddSales/AddSales";
 import {
   BrowserRouter as Router,
   Route,
@@ -22,6 +23,10 @@ function App() {
     {
       path: "/addStock",
       element: <AddStock />,
+    },
+    {
+      path: "/addSales",
+      element: <AddSales />,
     },
   ]);
   return (
