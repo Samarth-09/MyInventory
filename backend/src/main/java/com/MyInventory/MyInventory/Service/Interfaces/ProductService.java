@@ -1,4 +1,4 @@
-package com.MyInventory.MyInventory.Service;
+package com.MyInventory.MyInventory.Service.Interfaces;
 
 import com.MyInventory.MyInventory.Entities.Product;
 

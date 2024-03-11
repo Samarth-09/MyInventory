@@ -1,7 +1,8 @@
-package com.MyInventory.MyInventory.Service;
+package com.MyInventory.MyInventory.Service.Implementations;
 
 import com.MyInventory.MyInventory.Entities.Product;
 import com.MyInventory.MyInventory.Repository.ProductRepo;
+import com.MyInventory.MyInventory.Service.Interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,7 @@
 package com.MyInventory.MyInventory.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 
@@ -14,15 +16,19 @@ public class Product {
 
     int price;
 
+//    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Supplier supid;
 
-    @OneToOne
+    @JsonManagedReference
+    @OneToOne(mappedBy = "product")
     Stock stid;
 
+//    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Sales sid;
 
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     User user;
 
@@ -32,6 +38,11 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getPrid()
+    {
+        return prid;
     }
 
     public int getPrice() {

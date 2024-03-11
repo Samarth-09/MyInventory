@@ -1,5 +1,6 @@
 package com.MyInventory.MyInventory.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uid;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Product> prlist;
 
@@ -23,6 +25,10 @@ public class User {
 
     public List<Product> getPrlist() {
         return prlist;
+    }
+
+    public int getUid() {
+        return uid;
     }
 
     public void setPrlist(List<Product> prlist) {

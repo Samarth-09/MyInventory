@@ -38,6 +38,10 @@ public class Supplier {
         return addr;
     }
 
+    public int getSupid() {
+        return supid;
+    }
+
     public void setAddr(String addr) {
         this.addr = addr;
     }

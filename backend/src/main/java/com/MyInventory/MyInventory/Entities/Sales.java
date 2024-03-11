@@ -25,7 +25,11 @@ public class Sales {
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.date = new Date();
+    }
+
+    public int getSid() {
+        return sid;
     }
 
     public int getQuantity() {

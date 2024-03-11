@@ -1,5 +1,6 @@
 package com.MyInventory.MyInventory.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -15,9 +16,9 @@ public class Stock {
 
     int quantity;
 
+    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Product product;
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Supplier supid;
 
@@ -26,7 +27,11 @@ public class Stock {
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.date = new Date();
+    }
+
+    public int getStid() {
+        return stid;
     }
 
     public int getQuantity() {
