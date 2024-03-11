@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-
+@CrossOrigin("http://localhost:3000")
 @RestController
 public class UserController {
     UserService us;

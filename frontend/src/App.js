@@ -35,7 +35,7 @@ function App() {
       element: <Profile/>
     },
     {
-      path: "/login",
+      path: "/signup",
       element: <Signup/>
     }
   ]);

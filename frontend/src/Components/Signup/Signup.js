@@ -3,6 +3,7 @@ import "../AddStock/AddStock.css";
 import { Route } from "react-router-dom";
 import NavBar from "../NavBar/NavBar.js";
 import Footer from "../Footer/Footer.js";
+import axios from "axios";
 const Signup = () => {
   const [name, setName] = useState("");
   const [pwd, setPwd] = useState("");
@@ -60,8 +61,36 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log("Form submitted:", name+pwd+saddr+sname);
+    const user = {
+      prlist: [
+        {
+          name: prname,
+          price: prprice,
+          supid: {
+            name: sname,
+            no: sno,
+            addr: saddr,
+          },
+          stid: {
+            quantity: stquantity,
+          },
+          sid: {
+            quantity: saquantity,
+            amount: saamount,
+          },
+        },
+      ],
+      name: name,
+      pwd: pwd,
+      storeName: storeName,
+    };
+    // console.log("Form submitted:", user);
+    storeData(user);
+  };
+
+  const storeData = async (user) => {
+    const u = await axios.post("http://localhost:8080/user/save", user);
+    console.log(u);
   };
 
   //   return (
