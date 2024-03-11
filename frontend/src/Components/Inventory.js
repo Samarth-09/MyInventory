@@ -88,6 +88,28 @@ export default function () {
     fetchData();
   }, []);
 
+  // const [isDialogOpen, setDialogOpen] = useState(false);
+
+  // const openDialog = () => {
+  //   setDialogOpen(true);
+  // };
+
+  // const closeDialog = () => {
+  //   setDialogOpen(false);
+  // };
+  // const MyDialog = ({ isOpen, onClose, content }) => {
+  //   return (
+  //     <div className={`dialog ${isOpen ? "open" : ""}`}>
+  //       <div className="dialog-content">
+  //         <span onClick={onClose} className="close-button">
+  //           &times;
+  //         </span>
+  //         {content}
+  //       </div>
+  //     </div>
+  //   );
+  // };
+
   return (
     <>
       <div className="bg">
@@ -110,8 +132,37 @@ export default function () {
             ></Product>
           ))}
         </div>
+        {/* <button onClick={openDialog}>Open Dialog</button>
+        <MyDialog
+          isOpen={isDialogOpen}
+          onClose={closeDialog}
+          content="This is the dialog content."
+        /> */}
         <Footer></Footer>
       </div>
     </>
   );
 }
+
+// const App = () => {
+//   const [isDialogOpen, setDialogOpen] = useState(false);
+
+//   const openDialog = () => {
+//     setDialogOpen(true);
+//   };
+
+//   const closeDialog = () => {
+//     setDialogOpen(false);
+//   };
+
+//   return (
+//     <div>
+//       <button onClick={openDialog}>Open Dialog</button>
+//       <MyDialog
+//         isOpen={isDialogOpen}
+//         onClose={closeDialog}
+//         content="This is the dialog content."
+//       />
+//     </div>
+//   );
+// };

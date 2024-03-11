@@ -2,6 +2,7 @@ import "./App.css";
 import AddStock from "./Components/AddStock/AddStock";
 import Inventory from "./Components/Inventory";
 import AddSales from "./Components/AddSales/AddSales";
+import Profile from "./Components/Profile/Profile";
 import {
   BrowserRouter as Router,
   Route,
@@ -28,6 +29,10 @@ function App() {
       path: "/addSales",
       element: <AddSales />,
     },
+    {
+      path: "/profile",
+      element: <Profile/>
+    }
   ]);
   return (
     <div className="App">
