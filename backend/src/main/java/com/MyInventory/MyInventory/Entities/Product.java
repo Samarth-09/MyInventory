@@ -16,21 +16,22 @@ public class Product {
 
     int price;
 
-//    @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    Supplier supid;
-
-    @JsonManagedReference
-    @OneToOne(mappedBy = "product")
-    Stock stid;
-
-//    @JsonBackReference
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    Sales sid;
-
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     User user;
+     String supName;
+
+    int quantity;
+
+    int sales_amount;
+
+    public int getPrid() {
+        return prid;
+    }
+
+    public void setPrid(int prid) {
+        this.prid = prid;
+    }
 
     public String getName() {
         return name;
@@ -38,11 +39,6 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getPrid()
-    {
-        return prid;
     }
 
     public int getPrice() {
@@ -53,28 +49,28 @@ public class Product {
         this.price = price;
     }
 
-    public Supplier getSupid() {
-        return supid;
+    public String getSupName() {
+        return supName;
     }
 
-    public void setSupid(Supplier supid) {
-        this.supid = supid;
+    public void setSupName(String supName) {
+        this.supName = supName;
     }
 
-    public Stock getStid() {
-        return stid;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setStid(Stock stid) {
-        this.stid = stid;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public Sales getSid() {
-        return sid;
+    public int getSales_amount() {
+        return sales_amount;
     }
 
-    public void setSid(Sales sid) {
-        this.sid = sid;
+    public void setSales_amount(int sales_amount) {
+        this.sales_amount = sales_amount;
     }
 
     public User getUser() {
@@ -84,4 +80,7 @@ public class Product {
     public void setUser(User user) {
         this.user = user;
     }
+
+
+
 }

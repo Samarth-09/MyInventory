@@ -91,71 +91,9 @@ const Signup = () => {
   const storeData = async (user) => {
     const u = await axios.post("http://localhost:8080/user/save", user);
     console.log(u);
+    localStorage.setItem("uid", u.data.uid);
   };
 
-  //   return (
-  //     <div className="back">
-  //       <NavBar></NavBar>
-  //       <hr className="addstock-hr"></hr>
-  //       <div className="stock-input">
-  //         <p>Add Stock</p>
-  //         <label className="label">
-  //           Username:
-  //           <input
-  //             type="text"
-  //             name="UserName"
-  //             value={name}
-  //             onChange={(e) => {setName(e.target.value);}}
-  //             className="input"
-  //           />
-  //         </label>
-  //         <label className="label">
-  //           Name:
-  //           <input
-  //             type="text"
-  //             name="name"
-  //             value={pwd}
-  //             onChange={(e) => {setName(e.target.value);}}
-  //             className="input"
-  //           />
-  //         </label>
-  //         <label className="label">
-  //           Price:
-  //           <input
-  //             type="text"
-  //             name="price"
-  //             value={formData.price}
-  //             onChange={handleChange}
-  //             className="input"
-  //           />
-  //         </label>
-  //         <label className="label">
-  //           Quantity:
-  //           <input
-  //             type="text"
-  //             name="quantity"
-  //             value={formData.quantity}
-  //             onChange={handleChange}
-  //             className="input"
-  //           />
-  //         </label>
-  //         <label className="label">
-  //           Supplier:
-  //           <input
-  //             type="text"
-  //             name="supplier"
-  //             value={formData.supplier}
-  //             onChange={handleChange}
-  //             className="input"
-  //           />
-  //         </label>
-  //         <button type="submit" className="bttnn" onClick={handleSubmit}>
-  //           Submit
-  //         </button>
-  //       </div>
-  //       <Footer></Footer>
-  //     </div>
-  //   );
   const stateHooks = [
     {
       state: name,

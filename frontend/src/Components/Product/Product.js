@@ -19,6 +19,8 @@ export default function Product(props) {
           <hr />
           <button>Sales:- {props.sales}</button>
           <hr />
+          <button>Price:- {props.price}</button>
+          <hr />
           <button onClick={generateQr}>
             {qr == true ? "Close Qr" : "Generate Qr-code"}
           </button>
