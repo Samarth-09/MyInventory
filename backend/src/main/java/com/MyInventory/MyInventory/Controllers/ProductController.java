@@ -38,14 +38,21 @@ public class ProductController {
         return prl;
     }
     @PostMapping("/addStock")
-    public Product addStock(@RequestParam int quantity, @RequestParam int pid)
+    public Product addStock(@RequestBody Product p)
     {
-        return pr.addStock(pid, quantity);
+//        System.out.println(p.getQuantity());
+        return pr.addStock(p.getPrid(), p.getQuantity(), p.getUser().getUid());
     }
 
     @PostMapping("/addSales")
     public Product addSales(@RequestParam int sales, @RequestParam int pid)
     {
         return pr.addSales(pid, sales);
+    }
+
+    @PostMapping("/add")
+    public Product add(@RequestBody Product p)
+    {
+        return pr.add(p);
     }
 }

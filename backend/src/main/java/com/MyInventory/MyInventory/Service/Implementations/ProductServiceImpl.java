@@ -1,7 +1,9 @@
 package com.MyInventory.MyInventory.Service.Implementations;
 
 import com.MyInventory.MyInventory.Entities.Product;
+import com.MyInventory.MyInventory.Entities.User;
 import com.MyInventory.MyInventory.Repository.ProductRepo;
+import com.MyInventory.MyInventory.Repository.UserRepo;
 import com.MyInventory.MyInventory.Service.Interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +17,12 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepo productRepo;
+
+    private UserRepo userRepo;
+    @Autowired
+    public void setUserRepo(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @Autowired
     public ProductServiceImpl(ProductRepo pr)
@@ -35,13 +43,20 @@ public class ProductServiceImpl implements ProductService {
         return p.orElse(null);
     }
     @Override
-    public Product addStock(int pid, int quantity)
+    public Product addStock(int pid, int quantity, int uid)
     {
+//        System.out.println(pid);
         Optional<Product> pr = productRepo.findById(pid);
         if(pr.isPresent())
         {
-            pr.get().setQuantity(pr.get().getQuantity()+quantity);
-            return productRepo.save(pr.get());
+            User u = userRepo.findById(uid).orElse(null);
+            Product p = pr.get();
+            int idx = u.getPrlist().indexOf(p);
+            p.setQuantity(pr.get().getQuantity()+quantity);
+            u.getPrlist().toArray()[idx] = p;
+            userRepo.save(u);
+//            System.out.println(u.getPrlist());
+            return productRepo.save(p);
         }
         return null;
     }
@@ -55,5 +70,10 @@ public class ProductServiceImpl implements ProductService {
             return productRepo.save(pr.get());
         }
         return null;
+    }
+
+    @Override
+    public Product add(Product p) {
+        return productRepo.save(p);
     }
 }
