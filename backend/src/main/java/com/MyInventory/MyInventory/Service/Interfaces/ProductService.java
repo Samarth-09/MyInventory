@@ -12,7 +12,7 @@ public interface ProductService {
 
     public Product addStock(int pid, int quantity, int uid);
 
-    public Product addSales(int pid, int sales);
+    public Product addSales(int pid, int sales, int quantity, int uid);
 
     Product add(Product p);
 }

@@ -3,11 +3,17 @@ import "../AddStock/AddStock.css";
 import { useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import axios from "axios";
+import { queries } from "@testing-library/react";
 export default function AddSales() {
   const [formData, setFormData] = useState({
-    category: "",
+    sales_amount: 0,
     name: "",
-    quantity: "",
+    quantity: 0,
+    prid: 0,
+    user: {
+      uid: localStorage.getItem("uid")
+    }
   });
 
   const handleChange = (e) => {
@@ -20,10 +26,19 @@ export default function AddSales() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log("Form submitted:", formData);
+    fetchData();    
   };
 
+  const fetchData = async () => {
+    var res = await axios.post("http://localhost:8080/product/addSales", formData);
+    if(res.data != null)
+    {
+      alert("Sales Added");
+    }
+    else{
+      alert("Unsuccessfull");
+    }
+  }
   return (
     <div className="back">
       <NavBar></NavBar>
@@ -31,16 +46,16 @@ export default function AddSales() {
       <div className="stock-input">
         <p>Add Sales</p>
         <label className="label">
-          Category:
+          Product Id:
           <input
-            type="text"
-            name="category"
-            value={formData.category}
+            type="number"
+            name="prid"
+            value={formData.prid}
             onChange={handleChange}
             className="input"
           />
         </label>
-        <label className="label">
+        {/* <label className="label">
           Name:
           <input
             type="text"
@@ -49,13 +64,23 @@ export default function AddSales() {
             onChange={handleChange}
             className="input"
           />
-        </label>
+        </label> */}
         <label className="label">
           Quantity:
           <input
-            type="text"
+            type="number"
             name="quantity"
             value={formData.quantity}
+            onChange={handleChange}
+            className="input"
+          />
+        </label>
+        <label className="label">
+          Sales:
+          <input
+            type="number"
+            name="sales_amount"
+            value={formData.sales_amount}
             onChange={handleChange}
             className="input"
           />

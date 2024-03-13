@@ -43,11 +43,11 @@ public class ProductController {
 //        System.out.println(p.getQuantity());
         return pr.addStock(p.getPrid(), p.getQuantity(), p.getUser().getUid());
     }
-
+//@RequestParam int sales, @RequestParam int prid, @RequestParam int quantity,@RequestParam int uid
     @PostMapping("/addSales")
-    public Product addSales(@RequestParam int sales, @RequestParam int pid)
+    public Product addSales(@RequestBody Product p)
     {
-        return pr.addSales(pid, sales);
+        return pr.addSales(p.getPrid(), p.getSales_amount(), p.getQuantity(), p.getUser().getUid());
     }
 
     @PostMapping("/add")

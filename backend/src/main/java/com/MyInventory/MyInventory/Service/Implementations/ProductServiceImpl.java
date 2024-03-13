@@ -62,18 +62,26 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product addSales(int pid, int sales) {
+    public Product addSales(int pid, int sales, int quantity, int uid) {
         Optional<Product> pr = productRepo.findById(pid);
         if(pr.isPresent())
         {
-            pr.get().setSales_amount(pr.get().getSales_amount()+sales);
-            return productRepo.save(pr.get());
+            User u = userRepo.findById(uid).orElse(null);
+            Product p = pr.get();
+            int idx = u.getPrlist().indexOf(p);
+            p.setQuantity(pr.get().getQuantity()-quantity);
+            p.setSales_amount(p.getSales_amount() + sales);
+            u.getPrlist().toArray()[idx] = p;
+            userRepo.save(u);
+//            System.out.println(u.getPrlist());
+            return productRepo.save(p);
         }
         return null;
     }
 
     @Override
     public Product add(Product p) {
+        p.setUser(userRepo.findById(p.getUser().getUid()).orElse(null));
         return productRepo.save(p);
     }
 }
