@@ -1,6 +1,6 @@
 import { useState, React } from "react";
 import "../AddStock/AddStock.css";
-import { Route } from "react-router-dom";
+import { Route, useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar.js";
 import Footer from "../Footer/Footer.js";
 import axios from "axios";
@@ -8,78 +8,11 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [pwd, setPwd] = useState("");
   const [storeName, setStoreName] = useState("");
-  const [prname, setPrname] = useState("");
-  const [prprice, setPrprice] = useState("");
-  const [sname, setSname] = useState("");
-  const [sno, setSno] = useState("");
-  const [saddr, setSaddr] = useState("");
-  const [stquantity, setStquantity] = useState("");
-  const [saquantity, setSaquantity] = useState("");
-  const [saamount, setSaamount] = useState("");
-
-  //     {
-  //     prlist: [{
-  //         name:"",
-  //         price:0,
-  //         supid: {
-  //             name:"",
-  //             no:"",
-  //             addr:""
-  //         },
-  //         stid: {
-  //             quantity: 0
-  //         },
-  //         sid: {
-  //             quantity: 0,
-  //             amount: 0
-  //         }
-  //     }],
-  //     name: "",
-  //     pwd: "",
-  //     storeName: "",
-  //   });
-
-  //   const handleProduct = (e) =>{
-  //     const { name, value } = e.target;
-  //     setFormData((prevData) => ({
-  //         ...prevData,
-  //         prlist: [
-  //             {
-  //                 ...prevData.prlist[0],
-  //             }
-  //         ],
-  //       }));
-  //   }
-
-  //   const handleChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setFormData((prevData) => ({
-  //       ...prevData,
-  //       [name]: value,
-  //     }));
-  //   };
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
-      prlist: [
-        {
-          name: prname,
-          price: prprice,
-          supid: {
-            name: sname,
-            no: sno,
-            addr: saddr,
-          },
-          stid: {
-            quantity: stquantity,
-          },
-          sid: {
-            quantity: saquantity,
-            amount: saamount,
-          },
-        },
-      ],
+      prlist: [],
       name: name,
       pwd: pwd,
       storeName: storeName,
@@ -89,9 +22,11 @@ const Signup = () => {
   };
 
   const storeData = async (user) => {
-    const u = await axios.post("http://localhost:8080/user/save", user);
-    console.log(u);
-    localStorage.setItem("uid", u.data.uid);
+    const res = await axios.post("http://localhost:8080/user/signup", user);
+    console.log(res.data);
+    localStorage.setItem("uid", res.data.uid);
+    alert(`Your uid is:- ${res.data.uid}`);
+    navigate("/inventory");
   };
 
   const stateHooks = [
@@ -115,62 +50,6 @@ const Signup = () => {
       label: "Store Name",
       type: "text",
       inputName: "StoreName",
-    },
-    {
-      state: prname,
-      setState: setPrname,
-      label: "Product Name",
-      type: "text",
-      inputName: "ProductName",
-    },
-    {
-      state: prprice,
-      setState: setPrprice,
-      label: "Product Price",
-      type: "number",
-      inputName: "ProductPrice",
-    },
-    {
-      state: sname,
-      setState: setSname,
-      label: "Supplier Name",
-      type: "text",
-      inputName: "SupplierName",
-    },
-    {
-      state: sno,
-      setState: setSno,
-      label: "Supplier Number",
-      type: "text",
-      inputName: "SupplierNumber",
-    },
-    {
-      state: saddr,
-      setState: setSaddr,
-      label: "Supplier Address",
-      type: "text",
-      inputName: "SupplierAddress",
-    },
-    {
-      state: stquantity,
-      setState: setStquantity,
-      label: "Stock Quantity",
-      type: "number",
-      inputName: "StockQuantity",
-    },
-    {
-      state: saquantity,
-      setState: setSaquantity,
-      label: "Sale Quantity",
-      type: "number",
-      inputName: "SaleQuantity",
-    },
-    {
-      state: saamount,
-      setState: setSaamount,
-      label: "Sale Amount",
-      type: "number",
-      inputName: "SaleAmount",
     },
   ];
 

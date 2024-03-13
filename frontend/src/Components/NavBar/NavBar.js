@@ -11,8 +11,11 @@ export default function NavBar() {
           Inventory
         </Link>
         {/* <a>Inventory</a> */}
-        <Link to="/" className="links">
-          About Us
+        <Link to="/login" className="links">
+           Login
+        </Link>
+        <Link to="/signup" className="links">
+           signup
         </Link>
         {/* <a href="#">About Us</a> */}
         <Link to="/profile" class="profile-icon">

@@ -6,78 +6,40 @@ import "./Inventory.css";
 import Button from "./Button/Button";
 import axios from "axios";
 import Footer from "./Footer/Footer";
+import { useNavigate } from "react-router-dom";
 // import * as img from "/Images/img1.png";
 export default function () {
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
 
-  const [data, setData] = useState([
-  //   {
-  //     id: 1,
-  //     name: "Realme X7 Max",
-  //     quantity: "50",
-  //     sales: "10000",
-  //     img: "/Images/img1.png",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Realme Narzo",
-  //     quantity: "50",
-  //     sales: "10000",
-  //     img: "/Images/img2.webp",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Lenevo Yoga 920",
-  //     quantity: "50",
-  //     sales: "10000",
-  //     img: "/Images/img1.png",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Lenevo Yoga 720",
-  //     quantity: "50",
-  //     sales: "10000",
-  //     img: "/Images/img2.webp",
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "Charger",
-  //     quantity: "50",
-  //     sales: "10000",
-  //     img: "/Images/img1.png",
-  //   },
-  //   {
-  //     id: 7,
-  //     name: "Power Bank",
-  //     quantity: "50",
-  //     sales: "10000",
-  //     img: "/Images/img2.webp",
-  //   },
-  //   {
-  //     id: 8,
-  //     name: "Power Bank",
-  //     quantity: "50",
-  //     sales: "10000",
-  //     img: "/Images/img1.png",
-  //   },
-  //   {
-  //     id: 9,
-  //     name: "Power Bank",
-  //     quantity: "50",
-  //     sales: "10000",
-  //     img: "/Images/img2.webp",
-  //   },
-  ]);
   const fetchData = async () => {
-    var id = localStorage.getItem("uid") ?? 1;
-    var res = await axios.get("http://localhost:8080/user/"+id);
-    setData(res.data.prlist);
-    console.log(data);
+    try {
+      var id = localStorage.getItem("uid");
+      var res = await axios.get("http://localhost:8080/user/" + id);
+      if (res.data.prlist.length == 0) {
+        alert("Add some Products");
+        navigate("/addStock");
+      } else {
+        setData(res.data.prlist);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
   useEffect(() => {
-    fetchData();
+    if (localStorage.getItem("uid") == null) {
+      alert("You need to Login first");
+      navigate("/login");
+    } else {
+      fetchData();
+    }
   }, []);
 
- 
+  useEffect(() => {
+    // Log the data state after it has been updated
+    console.log(data);
+  }, [data]);
+
   return (
     <>
       <div className="bg">
@@ -108,25 +70,59 @@ export default function () {
   );
 }
 
-// const App = () => {
-//   const [isDialogOpen, setDialogOpen] = useState(false);
-
-//   const openDialog = () => {
-//     setDialogOpen(true);
-//   };
-
-//   const closeDialog = () => {
-//     setDialogOpen(false);
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={openDialog}>Open Dialog</button>
-//       <MyDialog
-//         isOpen={isDialogOpen}
-//         onClose={closeDialog}
-//         content="This is the dialog content."
-//       />
-//     </div>
-//   );
-// };
+//   {
+//     id: 1,
+//     name: "Realme X7 Max",
+//     quantity: "50",
+//     sales: "10000",
+//     img: "/Images/img1.png",
+//   },
+//   {
+//     id: 2,
+//     name: "Realme Narzo",
+//     quantity: "50",
+//     sales: "10000",
+//     img: "/Images/img2.webp",
+//   },
+//   {
+//     id: 4,
+//     name: "Lenevo Yoga 920",
+//     quantity: "50",
+//     sales: "10000",
+//     img: "/Images/img1.png",
+//   },
+//   {
+//     id: 5,
+//     name: "Lenevo Yoga 720",
+//     quantity: "50",
+//     sales: "10000",
+//     img: "/Images/img2.webp",
+//   },
+//   {
+//     id: 6,
+//     name: "Charger",
+//     quantity: "50",
+//     sales: "10000",
+//     img: "/Images/img1.png",
+//   },
+//   {
+//     id: 7,
+//     name: "Power Bank",
+//     quantity: "50",
+//     sales: "10000",
+//     img: "/Images/img2.webp",
+//   },
+//   {
+//     id: 8,
+//     name: "Power Bank",
+//     quantity: "50",
+//     sales: "10000",
+//     img: "/Images/img1.png",
+//   },
+//   {
+//     id: 9,
+//     name: "Power Bank",
+//     quantity: "50",
+//     sales: "10000",
+//     img: "/Images/img2.webp",
+//   },

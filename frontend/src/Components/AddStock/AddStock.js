@@ -1,9 +1,10 @@
-import { useState, React } from "react";
+import { useState, React, useEffect } from "react";
 import "./AddStock.css";
 // import { Route } from "react-router-dom";
 import NavBar from "../NavBar/NavBar.js";
 import Footer from "../Footer/Footer.js";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import Button from "../Button/Button.js";
 const AddStock = () => {
   const [formData, setFormData] = useState({
@@ -13,9 +14,9 @@ const AddStock = () => {
     quantity: 0,
     supName: "",
     sales_amount: 0,
-    user:{
-      "uid":localStorage.getItem("uid")
-    }
+    user: {
+      uid: localStorage.getItem("uid"),
+    },
   });
 
   const [x, setX] = useState(0);
@@ -27,7 +28,13 @@ const AddStock = () => {
       [name]: value,
     }));
   };
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("uid") == null) {
+      alert("You need to Login first");
+      navigate("/login");
+    }
+  }, []);
   const fetchData = async () => {
     if (x == 1) {
       var res = await axios.post("http://localhost:8080/product/add", formData);
@@ -37,7 +44,10 @@ const AddStock = () => {
         alert("Unsucessfull");
       }
     } else {
-      var res = await axios.post("http://localhost:8080/product/addStock", formData);
+      var res = await axios.post(
+        "http://localhost:8080/product/addStock",
+        formData
+      );
       if (res.data != null) {
         alert("Added Stock");
       } else {

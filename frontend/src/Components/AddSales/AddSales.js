@@ -1,10 +1,11 @@
 import React from "react";
 import "../AddStock/AddStock.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import axios from "axios";
-import { queries } from "@testing-library/react";
+import { useNavigate } from "react-router-dom";
+// import { queries } from "@testing-library/react";
 export default function AddSales() {
   const [formData, setFormData] = useState({
     sales_amount: 0,
@@ -12,8 +13,8 @@ export default function AddSales() {
     quantity: 0,
     prid: 0,
     user: {
-      uid: localStorage.getItem("uid")
-    }
+      uid: localStorage.getItem("uid"),
+    },
   });
 
   const handleChange = (e) => {
@@ -26,19 +27,26 @@ export default function AddSales() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchData();    
+    fetchData();
   };
-
-  const fetchData = async () => {
-    var res = await axios.post("http://localhost:8080/product/addSales", formData);
-    if(res.data != null)
-    {
-      alert("Sales Added");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("uid") == null) {
+      alert("You need to Login first");
+      navigate("/login");
     }
-    else{
+  }, []);
+  const fetchData = async () => {
+    var res = await axios.post(
+      "http://localhost:8080/product/addSales",
+      formData
+    );
+    if (res.data != null) {
+      alert("Sales Added");
+    } else {
       alert("Unsuccessfull");
     }
-  }
+  };
   return (
     <div className="back">
       <NavBar></NavBar>
