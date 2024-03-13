@@ -5,7 +5,7 @@
   /* border: 2px solid green; */
   border-radius: 8px;
   overflow: hidden;
-  width: 190px;
+  width: 20%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .product-card:hover {
@@ -15,8 +15,8 @@
 }
 .product-card img {
   padding-top: 10px;
-  width: 150px;
-  height: 100px;
+  width: 180px;
+  height: 120px;
 }
 
 .product-details {

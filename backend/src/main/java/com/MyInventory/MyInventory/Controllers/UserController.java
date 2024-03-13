@@ -1,6 +1,7 @@
 package com.MyInventory.MyInventory.Controllers;
 import com.MyInventory.MyInventory.Entities.User;
 import com.MyInventory.MyInventory.Service.Interfaces.*;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     UserService us;
     ProductService pr;
-    
+
     @Autowired
     public void setUs(UserService u)
     {
@@ -27,6 +28,7 @@ public class UserController {
     @GetMapping("/{id}")
     public User getUser(@PathVariable Integer id)
     {
+
         return us.getUserById(id);
     }
 
@@ -38,5 +40,21 @@ public class UserController {
             p.setUser(u);
         });
         return us.saveUser(u);
+    }
+
+    @GetMapping("/login")
+    public User login(@RequestParam int uid, @RequestParam String pwd)
+    {
+        User u = us.getUserById(uid);
+//        System.out.println(u.getUid());
+        if(u !=null)
+        {
+            System.out.println(uid+pwd);
+            if(u.getPwd().equals(pwd))
+            {
+                return u;
+            }
+        }
+        return null;
     }
 }

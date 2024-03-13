@@ -13,6 +13,8 @@ export default function Product(props) {
         <img className="image" src={props.img} alt="Product Image"></img>
         <hr />
         <div class="product-details">
+        <button>ID:- {props.id}</button>
+          <hr />
           <button>{props.name}</button>
           <hr />
           <button>Quantity:- {props.quantity}</button>

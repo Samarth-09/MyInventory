@@ -93,10 +93,11 @@ export default function () {
           {data.map((item) => (
             <Product
               key={item.prid}
+              id={item.prid}
               name={item.name}
               quantity={item.quantity}
               sales={item.sales_amount}
-              img="/Images/img2.webp"
+              img="/Images/img1.png"
               price={item.price}
             ></Product>
           ))}
