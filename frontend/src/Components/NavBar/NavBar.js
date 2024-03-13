@@ -18,8 +18,8 @@ export default function NavBar() {
            signup
         </Link>
         {/* <a href="#">About Us</a> */}
-        <Link to="/profile" class="profile-icon">
-          P
+        <Link to="/login" class="profile-icon" onClick={() => localStorage.removeItem("uid")}>
+          LogOut
         </Link>
       </div>
     </>

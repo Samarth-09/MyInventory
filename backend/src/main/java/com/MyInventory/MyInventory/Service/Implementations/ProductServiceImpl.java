@@ -82,6 +82,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product add(Product p) {
         p.setUser(userRepo.findById(p.getUser().getUid()).orElse(null));
+//        e.setDepartment(departnmentRepo.findById(e.getDept().getId).orElse(null));
         return productRepo.save(p);
     }
 }
