@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# MyInventory
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MyInventory is a web application designed to assist storekeepers in efficiently managing their inventory (stock). With a user-friendly interface and robust features, storekeepers can easily keep track of their products, monitor sales, manage stock quantities, and add new stock seamlessly.
 
-## Available Scripts
+## Key Features
 
-In the project directory, you can run:
+- **Product Management**: Storekeepers can view their products in a structured manner, enabling easy navigation and management.
 
-### `npm start`
+- **Sales Tracking**: The application provides insights into the sales of each product, allowing storekeepers to monitor sales performance effectively.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Stock Management**: Storekeepers can monitor the quantity left in stock for each product, ensuring timely restocking when necessary.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Supplier Management**: Adding new stock is made simple with the ability to input supplier details along with the stock addition.
 
-### `npm test`
+- **Sales Recording**: Storekeepers can conveniently record sales of each product, facilitating accurate sales tracking and inventory management.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technology Stack
 
-### `npm run build`
+- **Frontend**: React.js is used to develop the frontend, providing a modern and responsive user interface for enhanced user experience.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Backend**: Spring Boot powers the backend, offering a robust and scalable server-side framework to handle business logic and data management efficiently.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Database**: MySQL is utilized as the database management system, providing a reliable and secure storage solution for storing inventory data.
